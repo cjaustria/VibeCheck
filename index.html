@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeCheck | Guess The Song</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="sidebar" class="sidebar">
+        <span class="close-btn" onclick="toggleMenu()">&times;</span>
+        <h2 class="menu-title">VibeCheck</h2>
+        <nav>
+            <button onclick="showScreen('home-screen')">Home</button>
+            <button onclick="showScreen('leaderboard-screen')">Profile & Leaderboards</button>
+            <button onclick="showScreen('difficulty-screen')">Game Modes</button>
+            <button onclick="showScreen('streak-screen')">Streaks</button>
+        </nav>
+        <div class="menu-footer">
+            <span class="volume-icon">🔊 Audio On</span>
+        </div>
+    </div>
+
+    <div class="container" id="main-container">
+        
+        <header>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div><div></div><div></div>
+            </div>
+        </header>
+
+        <section id="home-screen" class="screen active">
+            <div class="home-layout">
+                <div class="vinyl-placeholder rotating"></div>
+                <div class="hero-text">
+                    <h1>VibeCheck</h1>
+                    <p class="blink-text" onclick="showScreen('difficulty-screen')">Click To Continue</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="difficulty-screen" class="screen">
+            <h2 class="section-title">Select Difficulty</h2>
+            <div class="difficulty-options">
+                <div class="card" onclick="startGame('easy')">
+                    <div class="vinyl-sleeve"><div class="mini-vinyl"></div></div>
+                    <p>Easy</p>
+                </div>
+                <div class="card" onclick="startGame('medium')">
+                    <div class="vinyl-sleeve"><div class="mini-vinyl"></div></div>
+                    <p>Medium</p>
+                </div>
+                <div class="card" onclick="startGame('hard')">
+                    <div class="vinyl-sleeve"><div class="mini-vinyl"></div></div>
+                    <p>Hard</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="game-screen" class="screen">
+            <div class="game-header">
+                <div class="timer-container">
+                    <div id="timer-progress"></div>
+                </div>
+                <div class="stats-row">
+                    <span>Score: <b id="score-display">0</b></span>
+                    <span>Streak: <b id="streak-display">0</b></span>
+                </div>
+            </div>
+
+            <div class="game-body">
+                <div class="vinyl-placeholder rotating small-vinyl"></div>
+                <div class="lyrics-container">
+                    <p id="lyrics-text">"I'm the one who ______ the vibe..."</p>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="guess-input" placeholder="Your guess..." autocomplete="off">
+                    <button id="hint-btn">💡</button>
+                </div>
+                <button class="primary-btn" onclick="checkAnswer()">Submit Guess</button>
+            </div>
+        </section>
+
+        <section id="leaderboard-screen" class="screen">
+            <div class="leaderboard-layout">
+                <div class="profile-box">
+                    <h3>User Profile</h3>
+                    <div class="avatar-circle"></div>
+                    <p class="user-name">Player1</p>
+                    <div class="user-stats">
+                        <p>Ranked: #1</p>
+                        <p>Total Points: 1240</p>
+                        <p>🔥 51 Streaks</p>
+                    </div>
+                </div>
+                <div class="list-box">
+                    <h3>Weekly Leaderboards</h3>
+                    <div class="tab-row">
+                        <span class="active-tab">Most Points</span>
+                        <span>Most Streaks</span>
+                    </div>
+                    <div class="ranking-container">
+                        <div class="rank-item highlight"><span>1. Player1</span> <span>1240 pts</span></div>
+                        <div class="rank-item"><span>2. Player2</span> <span>0 pts</span></div>
+                        <div class="rank-item"><span>3. Player3</span> <span>0 pts</span></div>
+                        <div class="rank-item"><span>4. Player4</span> <span>0 pts</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="streak-screen" class="screen">
+            <h2 class="section-title">Streaks</h2>
+            <div class="streak-grid">
+                <div class="streak-card">
+                    <div class="vinyl-placeholder v-color-1"></div>
+                    <p>10 Streaks</p>
+                </div>
+                <div class="streak-card">
+                    <div class="vinyl-placeholder v-color-2"></div>
+                    <p>20 Streaks</p>
+                </div>
+                <div class="streak-card">
+                    <div class="vinyl-placeholder v-color-3"></div>
+                    <p>50 Streaks</p>
+                </div>
+                <div class="streak-card">
+                    <div class="vinyl-placeholder v-color-4"></div>
+                    <p>100 Streaks</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
